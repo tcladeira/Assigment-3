@@ -1,4 +1,4 @@
-seq: seq.o GeometricSequence.o
+all: seq.o GeometricSequence.o
 	clang++ seq.o GeometricSequence.o -o seq
 
 seq.o: seq.cpp

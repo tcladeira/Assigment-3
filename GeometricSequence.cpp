@@ -26,7 +26,7 @@ GeometricSequence::GeometricSequence (int ac, int rc, int nc){
 
     }
 }
-//created a copy constructor here
+//created a copy constructor here. I already had the COPY CONST that I made from assignemnt 2. So, no changes here.
 GeometricSequence:: GeometricSequence (const GeometricSequence& original){
     a = original.a;
     r = original.r;
