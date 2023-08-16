@@ -24,4 +24,6 @@ void sub(GeometricSequence& userObject);
 void mult(GeometricSequence& userObject);
 void read();
 void write();
+//here are the headlines of all functions for Assignment 3:
+void initialize();
 };

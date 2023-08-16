@@ -50,6 +50,11 @@ int main(){
     cout << "(A+D) x C = ";
     result3.write();
 
+//New things for assignment 3:
+    A.initialize();
+    A.write();
+
+
     cout << "End of Program";
 
     return 0;

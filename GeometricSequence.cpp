@@ -102,3 +102,12 @@ void GeometricSequence::write(){
         cout << geoseq[i] << ", " << endl;
     }
 }
+
+//Here I will implement the functions of Assignment 3:
+void GeometricSequence:: initialize(){
+    a = 0;
+    r = 0;
+    n = 0;
+    delete [] geoseq;
+    geoseq = nullptr;
+}
