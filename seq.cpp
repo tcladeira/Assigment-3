@@ -10,11 +10,9 @@ using namespace std;
 int main(){
 
     GeometricSequence A, B, C;
-    int aob;
-    int rob;
-    int nob;
-    int size;
-    int* sequenceArr;
+    int a;
+    int r;
+    int n;
 
 //Creating the sequences A, B and C.
     cout << "Informe the values for sequence A: " << endl;
@@ -28,34 +26,30 @@ int main(){
     C.write();
 
 //Set D to be a sequence equal to A, but with -r.
-    A.getCharacteristic(aob, rob, nob);
-    GeometricSequence D(aob, -rob, nob);
+    A.getCharacteristics(a, r, n);
+    GeometricSequence D(a, -r, n);
     D.write();
 
-//Adding A + B and priting.
-    GeometricSequence result1 = A;
-    result1.add(B);
-    cout << "A + B = ";
-    result1.write();
-//Multiplying AxC and Subtracting B:
-    GeometricSequence result2 = A;
-    result2.mult(C);
-    result2.sub(B);
-    cout << "A x C - B = ";
-    result2.write();
+    cout << "Geometric Sequency D: " << D << endl;
 
-    GeometricSequence result3 = A;
-    result3.add(D);
-    result3.mult(C);
-    cout << "(A+D) x C = ";
-    result3.write();
+    //New command lines for the Assignment 3. Using overloading operations instead of the regular ones.
+    // (c) Computes and displays the following results:
+    //  • A+B
 
-//New things for assignment 3:
-    A.initialize(1);
-    A.write();
+  GeometricSequence result1 = A + B;
+  cout << "• A+B: " << result1 << endl;
+
+  //  • A×C−B
+  GeometricSequence result2 = A * C - B;
+  cout << "• AxC-B: " << result2 << endl;
+
+  //  • (A+D)×C
+  GeometricSequence result3 = (A + D) * C;
+  cout << "• (A+D)xC: " << result3 << endl;
 
 
-    cout << "End of Program";
+
+cout << "End of Program";
 
     return 0;
 }

@@ -38,28 +38,14 @@ GeometricSequence:: GeometricSequence (const GeometricSequence& original){
         geoseq[i] = original.geoseq[i];
     }
 }
-//For some reason my destructor is giving me some trouble, so I commemet it out.
+//For some reason my destructor is giving me some trouble, so I commemet it out. 
+//Comments on Assignment 3: this is still breaking my code. No idea what might be. Just going to leave it as a comment so the code can run.
+
+
 // GeometricSequence::~GeometricSequence(){
 //     delete[] geoseq;
 // }
 
-void GeometricSequence::getCharacteristic(int& aob, int& rob, int& nob){
-    aob = a;
-    rob = r;
-    nob = n;
-}
-
-int& GeometricSequence::element(int index){
-    assert(index<size && index>=0);
-    int& reference = geoseq[index];
-    return reference;
-}
-
-int& GeometricSequence::element(int index) const{
-    assert(index<size && index>=0);
-    int& reference = geoseq[index];
-    return reference;
-}
 
 void GeometricSequence::add(GeometricSequence& userObject){
     assert(n == userObject.n);
@@ -113,4 +99,135 @@ void GeometricSequence::initialize(int n)
   {
     geoseq[i] = a * pow(r, i);
   };
+}
+
+//All new fucntions that I just added. Have to fix them all!:
+
+
+int GeometricSequence::operator()(int index){
+  assert(index < n && index >= 0);
+  return geoseq[index];
+}
+
+//had to change the "getCharacteristics" function to use "this" element. Without it, I was geting lost with the names
+//of the different objects elements (aob, rob, nob) everywhere.
+void GeometricSequence::getCharacteristics(int &a, int &r, int &n) const{
+  a = this->a;
+  r = this->r;
+  n = this->n;
+}
+
+const int &GeometricSequence::element(int index) const{
+  assert(index < n && index >= 0);
+  return geoseq[index];
+}
+
+
+int &GeometricSequence::element(int index)
+{
+  assert(index < n && index >= 0);
+  return geoseq[index];
+}
+
+std::string GeometricSequence::getString() const
+{
+  std::string objText = "[";
+  for (int i = 0; i < n; i++)
+  {
+    objText += std::to_string(geoseq[i]);
+    objText += (i == (n - 1) ? "" : ", ");
+  }
+  objText += "]";
+  return objText;
+}
+
+std::ostream &operator<<(std::ostream &stream, const GeometricSequence &obj)
+{
+  stream << obj.getString();
+  return stream;
+}
+
+std::istream &operator>>(std::istream &stream, GeometricSequence &obj)
+{
+  int a, r, n;
+  std::cout << "a: ";
+  stream >> a;
+  std::cout << "r: ";
+  stream >> r;
+  std::cout << "n: ";
+  stream >> n;
+
+  obj.a = a;
+  obj.r = r;
+  obj.n = n;
+  delete[] obj.geoseq;
+  obj.geoseq = new int[n];
+  for (int i = 0; i < n; i++)
+  {
+    obj.geoseq[i] = a * pow(r, i);
+  };
+  return stream;
+}
+
+GeometricSequence &GeometricSequence::operator+=(GeometricSequence &other)
+{
+  assert(n == other.n);
+  for (int i = 0; i < n; i++)
+  {
+    geoseq[i] += other.geoseq[i];
+  };
+  return *this;
+}
+
+GeometricSequence &GeometricSequence::operator-=(GeometricSequence &other)
+{
+  assert(n == other.n);
+  for (int i = 0; i < n; i++)
+  {
+    geoseq[i] -= other.geoseq[i];
+  };
+  return *this;
+}
+
+GeometricSequence &GeometricSequence::operator*=(GeometricSequence &other)
+{
+  assert(n == other.n);
+  for (int i = 0; i < n; i++)
+  {
+    geoseq[i] *= other.geoseq[i];
+  };
+  return *this;
+}
+
+GeometricSequence GeometricSequence::operator+(const GeometricSequence &other)
+{
+  assert(n == other.n);
+  GeometricSequence result(other);
+  for (int i = 0; i < n; i++)
+  {
+    result.geoseq[i] = geoseq[i] + other.geoseq[i];
+  };
+  return result;
+}
+
+GeometricSequence GeometricSequence::operator-(const GeometricSequence &other)
+{
+  assert(n == other.n);
+  GeometricSequence result(other);
+  for (int i = 0; i < n; i++)
+  {
+    result.geoseq[i] = geoseq[i] - other.geoseq[i];
+  };
+  return result;
+}
+
+GeometricSequence GeometricSequence::operator*(const GeometricSequence &other)
+{
+  assert(n == other.n);
+  GeometricSequence result(other);
+  for (int i = 0; i < n; i++)
+  {
+    result.geoseq[i] = geoseq[i] * other.geoseq[i];
+  };
+  return result;
 }
