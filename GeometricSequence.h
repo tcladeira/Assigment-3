@@ -31,8 +31,9 @@ void initialize(int sizeOfSequenceInt);
 //the revised "element" functions:
 const int &element(int index) const;
 int &element(int index);
-  std::string getString() const;
-  int operator()(int index);
+string getString() const;
+int operator()(int index);
+//all overloaded operations:
   GeometricSequence &operator=(GeometricSequence &other);
   GeometricSequence &operator+=(GeometricSequence &other);
   GeometricSequence &operator-=(GeometricSequence &other);
@@ -40,9 +41,9 @@ int &element(int index);
   GeometricSequence operator+(const GeometricSequence &other);
   GeometricSequence operator-(const GeometricSequence &other);
   GeometricSequence operator*(const GeometricSequence &other);
-
-  friend std::istream &operator>>(std::istream &stream, GeometricSequence &obj);
+//using friend to allow ">>" to be overloaded
+  friend istream &operator>>(istream &stream, GeometricSequence &obj);
 };
 
-std::ostream &operator<<(std::ostream &stream, const GeometricSequence &obj);
-std::istream &operator>>(std::istream &stream, GeometricSequence &obj);
+ostream &operator<<(ostream &stream, const GeometricSequence &obj);
+istream &operator>>(istream &stream, GeometricSequence &obj);

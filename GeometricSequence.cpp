@@ -5,6 +5,7 @@
 //First thing is to include the libraries and do not forget the headline.
 #include <iostream>
 #include <cmath>
+#include <string>
 #include "GeometricSequence.h"
 using namespace std;
 
