@@ -51,7 +51,7 @@ int main(){
     result3.write();
 
 //New things for assignment 3:
-    A.initialize();
+    A.initialize(1);
     A.write();
 
 

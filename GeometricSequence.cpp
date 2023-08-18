@@ -8,11 +8,13 @@
 #include "GeometricSequence.h"
 using namespace std;
 
-//created one standard Constructor and one with parameters.
+//created one standard Constructor and one with parameters. When I added the "initialize" I had to put it to "1", otherwise
+// the for loop was going over the size of the array.
 GeometricSequence::GeometricSequence(){
     a = 1;
     r = 1;
     n = 1;
+    initialize(1);
 }
 
 GeometricSequence::GeometricSequence (int ac, int rc, int nc){
@@ -104,10 +106,11 @@ void GeometricSequence::write(){
 }
 
 //Here I will implement the functions of Assignment 3:
-void GeometricSequence:: initialize(){
-    a = 0;
-    r = 0;
-    n = 0;
-    delete [] geoseq;
-    geoseq = nullptr;
+void GeometricSequence::initialize(int n)
+{
+  geoseq = new int[n];
+  for (int i = 0; i < n; i++)
+  {
+    geoseq[i] = a * pow(r, i);
+  };
 }
