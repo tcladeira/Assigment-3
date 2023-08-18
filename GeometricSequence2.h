@@ -1,3 +1,6 @@
+// Student: Thiago Ladeira - 001213566 - tc.ladeira@uleth.ca
+// Assignment III - Geometric Sequence
+
 #pragma once
 using namespace std;
 

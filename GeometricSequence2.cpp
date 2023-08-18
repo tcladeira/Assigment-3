@@ -1,3 +1,7 @@
+// Student: Thiago Ladeira - 001213566 - tc.ladeira@uleth.ca
+// Assignment III - Geometric Sequence with Overloads
+
+
 #include <iostream>
 #include <cmath>
 #include <string>

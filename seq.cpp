@@ -1,5 +1,5 @@
 // Student: Thiago Ladeira - 001213566 - tc.ladeira@uleth.ca
-// Assignment II - Geometric Sequence
+// Assignment III - Geometric Sequence
 
 #include<iostream>
 #include<cmath>
